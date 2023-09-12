@@ -1,6 +1,6 @@
-import { IAppComment } from "./Comments"
-import { ITask } from "./Task"
-import { ITeam } from "./Team"
+import { IAppComment } from './Comments'
+import { ITask } from './Task'
+import { ITeam } from './Team'
 
 export interface IUser {
     id: string

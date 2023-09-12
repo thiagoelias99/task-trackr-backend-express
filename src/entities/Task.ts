@@ -1,6 +1,6 @@
-import { IAppComment } from "./Comments"
-import { ITeam } from "./Team"
-import { IUser } from "./User"
+import { IAppComment } from './Comments'
+import { ITeam } from './Team'
+import { IUser } from './User'
 
 export interface ITask{
     id: string
@@ -16,8 +16,8 @@ export interface ITask{
 }
 
 export enum ETaskStatus{
-    pending = "pending",
-    progress = "in progress",
-    completed = "completed",
-    canceled = "canceled"
+    pending = 'pending',
+    progress = 'in progress',
+    completed = 'completed',
+    canceled = 'canceled'
 }
