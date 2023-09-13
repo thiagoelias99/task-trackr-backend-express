@@ -1,0 +1,92 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "task-trackr-backend-express",
+    "dateExported": "2023-09-13T11:27:55.725Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "6a9fd3ac-b66b-40d0-bd38-84ffb0b668c9",
+            "name": "Users",
+            "containerId": "",
+            "created": "2023-09-12T23:52:03.326Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "0f6fccfa-6882-430f-96c4-83eedfef22ab",
+            "colId": "409f1831-2ba2-45e0-a74a-ce8f3d11b3a8",
+            "containerId": "6a9fd3ac-b66b-40d0-bd38-84ffb0b668c9",
+            "name": "get",
+            "url": "http://localhost:3333/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-09-12T23:52:09.527Z",
+            "modified": "2023-09-12T23:52:36.531Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "825355fa-4b1c-477c-9bd6-ea7fa0cf24c9",
+            "colId": "409f1831-2ba2-45e0-a74a-ce8f3d11b3a8",
+            "containerId": "6a9fd3ac-b66b-40d0-bd38-84ffb0b668c9",
+            "name": "post",
+            "url": "http://localhost:3333/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-09-13T00:03:44.042Z",
+            "modified": "2023-09-13T11:25:09.950Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Thiago\",\n  \"password\": \"123456\",\n  \"confirmPassword\": \"123456\",\n  \"email\": \"thiago@email.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1436dfeb-7729-44a8-9e08-6075c571082f",
+            "colId": "409f1831-2ba2-45e0-a74a-ce8f3d11b3a8",
+            "containerId": "6a9fd3ac-b66b-40d0-bd38-84ffb0b668c9",
+            "name": "put",
+            "url": "http://localhost:3333/users/1",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-09-13T00:04:09.721Z",
+            "modified": "2023-09-13T00:04:17.582Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f0f28cde-a1d5-43c5-ba9e-4523973d2466",
+            "colId": "409f1831-2ba2-45e0-a74a-ce8f3d11b3a8",
+            "containerId": "6a9fd3ac-b66b-40d0-bd38-84ffb0b668c9",
+            "name": "getById",
+            "url": "http://localhost:3333/users/1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-09-13T00:04:29.017Z",
+            "modified": "2023-09-13T00:04:32.129Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "742f8d45-de42-4a3b-8df3-faf41026a512",
+            "colId": "409f1831-2ba2-45e0-a74a-ce8f3d11b3a8",
+            "containerId": "6a9fd3ac-b66b-40d0-bd38-84ffb0b668c9",
+            "name": "delete",
+            "url": "http://localhost:3333/users/1",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-09-13T00:04:47.232Z",
+            "modified": "2023-09-13T00:04:52.154Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
