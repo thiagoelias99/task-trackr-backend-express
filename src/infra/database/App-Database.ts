@@ -1,5 +1,5 @@
 import { IUserRepository } from '../../repository/UserRepository'
 
-export interface AppDatabase {
+export interface IAppDatabase {
     users: IUserRepository
 }
