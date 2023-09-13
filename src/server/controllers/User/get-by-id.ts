@@ -1,8 +1,15 @@
 import { Request, Response, NextFunction } from 'express'
-import { NotImplementedError } from '../../../errors'
+import { userServices } from '../../../services'
+import { StatusCodes } from 'http-status-codes'
 
-function getById(req: Request, res: Response, next: NextFunction){
-    throw new NotImplementedError()
+async function getById(req: Request, res: Response, next: NextFunction){
+    try {
+        const id = req.params.id    
+        const user = await userServices.getById(id)    
+        res.status(StatusCodes.OK).json(user)        
+    } catch (error) {
+        next(error)
+    }
 }
 
 export default getById
