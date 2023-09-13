@@ -7,7 +7,7 @@ async function idValidator(req: Request<{ id: string }>, res: Response, next: Ne
 
     try {
         const ValidationSchema = z.object({
-            id: z.string().uuid({message: "Invalid id format"})
+            id: z.string().uuid({message: 'Invalid id format'})
         })
 
         ValidationSchema.parse({id})

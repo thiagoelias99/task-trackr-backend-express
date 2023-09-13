@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { IUserRepository } from '../../repository/UserRepository'
-import { PasswordMatchError } from '../../errors'
+import { EmailAlreadyRegisteredError, NotFoundError, PasswordMatchError } from '../../errors'
 
 export interface ICreateUser {
     name: string
@@ -10,20 +10,28 @@ export interface ICreateUser {
     confirmPassword: string
 }
 
-export function createUser(user: ICreateUser, repository: IUserRepository) {
+export async function createUser(user: ICreateUser, repository: IUserRepository) {
     if (user.password != user.confirmPassword) {
         throw new PasswordMatchError()
     }
 
-    return repository.save(
-        {
-            id: uuidv4(),
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            comments: [],
-            tasks: [],
-            teams: []
+    try {
+        await repository.getByEmail(user.email)
+        throw new EmailAlreadyRegisteredError()
+    } catch (error) {
+        if (error instanceof NotFoundError) {
+            return repository.save(
+                {
+                    id: uuidv4(),
+                    name: user.name,
+                    email: user.email,
+                    password: user.password,
+                    comments: [],
+                    tasks: [],
+                    teams: []
+                }
+            )
         }
-    )
+        throw error
+    }
 }

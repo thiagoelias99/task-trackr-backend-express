@@ -2,7 +2,7 @@ import { ErrorRequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import { ZodError } from 'zod'
 
-import { NotFoundError, NotImplementedError, PasswordMatchError } from '../../errors'
+import { EmailAlreadyRegisteredError, NotFoundError, NotImplementedError, PasswordMatchError } from '../../errors'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
@@ -14,6 +14,8 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     if (err instanceof PasswordMatchError) { res.status(StatusCodes.BAD_REQUEST).json(err.message); return }
 
     if (err instanceof NotFoundError) {res.status(StatusCodes.NOT_FOUND).json(err.message); return}
+    
+    if (err instanceof EmailAlreadyRegisteredError) {res.status(StatusCodes.BAD_REQUEST).json(err.message); return}
 
     if (err instanceof ZodError) {
         const errorList: { param: string, message: string }[] = []
