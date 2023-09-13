@@ -1,8 +1,15 @@
 import { Request, Response, NextFunction } from 'express'
-import { NotImplementedError } from '../../../errors'
+import { userServices } from '../../../services'
+import { StatusCodes } from 'http-status-codes'
 
-function remove(req: Request, res: Response, next: NextFunction){
-    throw new NotImplementedError()
+async function remove(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { id } = req.params
+        await userServices.deleteById(id)
+        res.sendStatus(StatusCodes.NO_CONTENT)
+    } catch (error) {
+        next(error)
+    }
 }
 
 export default remove

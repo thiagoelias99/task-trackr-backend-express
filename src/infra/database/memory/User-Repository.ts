@@ -22,7 +22,7 @@ export default class UserRepository implements IUserRepository {
             try {
                 const user = this.users.filter(user => user.id === id)[0]
 
-                if(!user){
+                if (!user) {
                     throw new NotFoundError(`User not found with id: ${id}`)
                 }
                 resolve(user)
@@ -36,7 +36,7 @@ export default class UserRepository implements IUserRepository {
             try {
                 const user = this.users.filter(user => user.email === email)[0]
 
-                if(!user){
+                if (!user) {
                     throw new NotFoundError(`User not found with email: ${email}`)
                 }
                 resolve(user)
@@ -47,11 +47,14 @@ export default class UserRepository implements IUserRepository {
     }
     remove(id: string): Promise<void> {
         return new Promise<void>((resolve) => {
-            try {
+
+            const user = this.users.filter(user => user.id === id)[0]
+
+            if (user) {
                 const users = this.users.filter(user => user.id !== id)
                 this.users = users
                 resolve()
-            } catch (error) {
+            } else {
                 throw new NotFoundError()
             }
         })
