@@ -1,5 +1,4 @@
 import { IUser } from '../../../entities/User'
-import { NotFoundError } from '../../../errors'
 import { IUserRepository } from '../../../repository/UserRepository'
 
 export default class UserRepository implements IUserRepository {
@@ -19,44 +18,20 @@ export default class UserRepository implements IUserRepository {
     }
     getById(id: string): Promise<IUser> {
         return new Promise<IUser>((resolve) => {
-            try {
-                const user = this.users.filter(user => user.id === id)[0]
-
-                if (!user) {
-                    throw new NotFoundError(`User not found with id: ${id}`)
-                }
-                resolve(user)
-            } catch (error) {
-                throw new NotFoundError(`User not found with id: ${id}`)
-            }
+            const user = this.users.filter(user => user.id === id)[0]
+            resolve(user)
         })
     }
     getByEmail(email: string): Promise<IUser> {
         return new Promise<IUser>((resolve) => {
-            try {
-                const user = this.users.filter(user => user.email === email)[0]
-
-                if (!user) {
-                    throw new NotFoundError(`User not found with email: ${email}`)
-                }
-                resolve(user)
-            } catch (error) {
-                throw new NotFoundError(`User not found with email: ${email}`)
-            }
+            const user = this.users.filter(user => user.email === email)[0]
+            resolve(user)
         })
     }
     remove(id: string): Promise<void> {
         return new Promise<void>((resolve) => {
-
-            const user = this.users.filter(user => user.id === id)[0]
-
-            if (user) {
-                const users = this.users.filter(user => user.id !== id)
-                this.users = users
-                resolve()
-            } else {
-                throw new NotFoundError()
-            }
+            this.users = this.users.filter(user => user.id !== id)
+            resolve()
         })
     }
 }
